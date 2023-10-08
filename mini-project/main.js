@@ -73,4 +73,5 @@ function drawHand(context,position,length,width){
     context.stroke();
     context.rotate(-position);
 }
-draw();
+// draw();
+setInterval(draw,1000);
