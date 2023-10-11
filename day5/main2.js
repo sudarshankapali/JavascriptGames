@@ -24,17 +24,56 @@ class box{
             this.position.y = e.clientY;
         })
     }
+    checkCollision(){
+        if(this.position.x > obj1.x){
+            context.fillStyle = "red";
+        }
+        else{
+            context.fillStyle = "green";
+        }
+    }
     update(){
         this.draw();
         this.move();
     }
 }
+class box1{
+    constructor(){
+        this.position = {
+            x: 150,
+            y:150,
+        }
+        this.size = {
+            width: 50,
+            height: 50,
+        }
+        this.color = "green";
+    }
+    draw(){
+        context.beginPath();
+        context.fillStyle = this.color;
+        context.fillRect(this.position.x,this.position.y,this.size.width,this.size.height);
+        context.fill();
+    }
+}
 const obj = new box();
+const obj1 = new box1();
 
+
+function colide(){
+    if(obj.position.x + obj.size.width > obj1.position.x && obj.position.x  < obj1.position.x + obj1.size.width && obj.position.y + obj.size.height > obj1.position.y && obj.position.y < obj1.position.y  +obj1.size.width){
+        obj1.color = "red";
+    }
+    else{
+        obj1.color = "green";
+    }
+}
 // gameloop 
 function animation(){
     context.clearRect(0,0,canvas.width,canvas.height);
     obj.update();
+    obj1.draw();
+    colide();
     window.requestAnimationFrame(animation);
 }
 animation();
