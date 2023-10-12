@@ -29,12 +29,17 @@ class bird{
             this.yPos += 0.05; 
         });
     }
-    
     update(){
-        context.clearRect(0,0,400,600);
+        this.newPos();
         this.render();
-        window.requestAnimationFrame(()=>this.update());
     }
+    
 }
 const obj = new bird();
-obj.update();
+function loop(){
+    context.clearRect(0,0,400,600);
+    obj.update();
+    window.requestAnimationFrame(loop());
+}
+
+loop();
