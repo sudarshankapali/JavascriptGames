@@ -13,6 +13,8 @@ bulletSound.src = "./Sound/bulletSound.wav";
 const player = new Player();
 const allbullet = [];
 
+const enemy = new Enemy();
+
 document.addEventListener("keydown",(e)=>{
     if(e.code === "ArrowUp") player.velocity.y = -5;
     if(e.code === "ArrowDown") player.velocity.y = 5;
@@ -44,6 +46,7 @@ sound.addEventListener("click",(e)=>{
 //game loop
 function animate(){
     context.clearRect(0,0,canvas.width,canvas.height);
+    enemy.update();
     player.update();
     for(let i = 0; i< allbullet.length; i++){
         allbullet[i].update();

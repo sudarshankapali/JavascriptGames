@@ -1,20 +1,22 @@
-class Player{
+class Enemy {
     constructor(){
+        this.xDir = 1;
         this.position = {
             x:0,
-            y:350,
-        };
-        this.velocity = {
+            y:0,
+        }
+        this.velocity={
             x:0,
             y:0,
-        };
+        }
         this.size = 50;
         this.image = new Image();
-        this.image.src = "./Images/spaceship.png";
+        this.image.src = "./Images/meteor.gif";
     }
     draw(){
-        context.fillStyle = "red";
-        // context.clearRect(0, 0, canvas.width, canvas.height);
+        // context.beginPath();
+        context.fillStyle = "white";
+        // context.fillRect(0,0,50,50);
         context.drawImage(this.image,this.position.x,this.position.y,this.size,this.size);
     }
     move(){
