@@ -12,7 +12,11 @@ document.addEventListener("keydown",(e)=>{
     if(e.code === "ArrowDown") player.velocity.y = 5;
     if(e.code === "ArrowLeft") player.velocity.x = -5;
     if(e.code === "ArrowRight") player.velocity.x = 5;
-    if(e.code === "Space") allbullet.push(new Bullet(player.position.x + 10 ,player.position.y));
+    if(e.code === "Space"){
+        allbullet.push(new Bullet(player.position.x + 10 ,player.position.y));
+        bulletSound.play()
+    }
+    
 });
 
 document.addEventListener("keyup",(e)=>{
@@ -23,8 +27,8 @@ document.addEventListener("keyup",(e)=>{
 });
 
 sound.addEventListener("keydown",(e)=>{
-    if(e.code === "Space")
-})
+    if(e.code === "Space") ;
+});
 // if(player.position.x + player.size > canvas.width || player.position.x < 0 ){
 //     player.velocity.x = 0;
 // }
