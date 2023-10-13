@@ -3,7 +3,7 @@ class Enemy {
         this.xDir = 1;
         this.position = {
             x:Math.random() * (350 - 50) + 50,
-            y:0,
+            y:-50,
         }
         this.velocity={
             x:0,
