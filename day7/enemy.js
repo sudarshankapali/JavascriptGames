@@ -12,6 +12,7 @@ class Enemy {
         this.size = Math.random() * (60 - 20) + 20;
         this.image = new Image();
         this.image.src = "./Images/meteor.gif";
+        this.isDead = false;
     }
     draw(){
         context.beginPath();
@@ -36,6 +37,16 @@ class Enemy {
     //         console.log("collision vayo");
     //     }
     // }
+    dead(){
+        this.velocity.y = 0;
+        setTimeout(()=>{
+            this.position.x = -100;
+            this.position.y = -100;
+            this.isDead = true;
+            score++;
+        },100);
+    }
+
     bulletCollision(bullets){
         for(let i = 0; i < bullets.length; i++){
             if(this.position.x + this.size >= bullets[i].position.x &&
@@ -43,9 +54,10 @@ class Enemy {
                 this.position.y + this.size >= bullets[i].position.y &&
                 this.position.y <= bullets[i].position.y + bullets[i].size
                 ){
-                    this.velocity.y = 0;
-                    this.position.x = -100;
-                    this.position.y = -100;
+                    // bullets[i].position.x = -200;
+                    // bullets[i].position.y = -200;
+                    this.image.src = "./Images/explosion.png";
+                    this.dead();
                 }
         }
     }
@@ -54,7 +66,8 @@ class Enemy {
         if(this.position.x + this.size >= player.position.x &&
             this.position.x <= player.position.x + player.size &&
             this.position.y + this.size >= player.position.y &&
-            this.position.y <= player.position.y + player.size
+            this.position.y <= player.position.y + player.size ||
+            this.position.y + this.size > canvas.height 
             ){
                 // console.log("colision vayo");
                 player.isAlive = false;

@@ -47,6 +47,14 @@ function animate(){
     for(let i = 0; i< allbullet.length; i++){
         allbullet[i].update();
     }
+    context.font = "20px Arial";
+    context.fillStyle = "white";
+    context.fillText("Score: "+score,10,40);
+    if(!player.isAlive){
+        context.font = "60px Arial";
+        context.fillStyle = "white";
+        context.fillText("Game Over",60,190);
+    }
     window.requestAnimationFrame(animate);
 }
 animate();
@@ -56,9 +64,11 @@ document.addEventListener("keydown",(e)=>{
     if(e.code === "ArrowDown") player.velocity.y = 5;
     if(e.code === "ArrowLeft") player.velocity.x = -5;
     if(e.code === "ArrowRight") player.velocity.x = 5;
-    if(e.code === "Space"){
-        allbullet.push(new Bullet(player.position.x + 10 ,player.position.y));
-        bulletSound.play()
+    if(player.isAlive && e.code === "Space"){
+        
+            allbullet.push(new Bullet(player.position.x + 10 ,player.position.y));
+            bulletSound.play()
+        
     }
     
 });
