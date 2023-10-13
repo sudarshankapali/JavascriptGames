@@ -30,11 +30,15 @@ class Enemy {
         }
         this.position.y += this.velocity.y;
     }
-    checkCollision(){
-        
-    }
+    // checkCollision(){
+    //     if(this.position.x + this.size > enemy.position.x && this.position.x < enemy.position.x + enemy.size && this.position.y > enemy.position.y + enemy.size)
+    //     {
+    //         console.log("collision vayo");
+    //     }
+    // }
     update(){
         this.draw();
         this.move();
+        // this.checkCollision();
     }
 }

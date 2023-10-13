@@ -1,7 +1,7 @@
 class Player{
     constructor(){
         this.position = {
-            x:0,
+            x:180,
             y:350,
         };
         this.velocity = {
@@ -10,7 +10,7 @@ class Player{
         };
         this.size = 50;
         this.image = new Image();
-        this.image.src = "./Images/spaceship.png";
+        this.image.src = "./Images/ship.png";
     }
     draw(){
         context.fillStyle = "red";

@@ -9,11 +9,14 @@ backgroundMusic.src = "./Sound/backgroundMusic.mp3";
 //loading bullet sound
 const bulletSound = new Audio();
 bulletSound.src = "./Sound/bulletSound.wav";
+bulletSound.volume = 0.5;
 
 const player = new Player();
 const allbullet = [];
 
 const enemy = new Enemy();
+
+const crash = new checkCollide();
 
 document.addEventListener("keydown",(e)=>{
     if(e.code === "ArrowUp") player.velocity.y = -5;
@@ -56,6 +59,7 @@ function animate(){
     player.update();
     for(let i = 0; i< allbullet.length; i++){
         allbullet[i].update();
+        crash.checkCollision(i);
     }
     window.requestAnimationFrame(animate);
 }
