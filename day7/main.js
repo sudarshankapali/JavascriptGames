@@ -2,9 +2,11 @@ let canvas = document.getElementById("canvas");
 let context = canvas.getContext("2d");
 let sound = document.getElementById("sound");
 
+//loading background music
 const backgroundMusic = new Audio();
 backgroundMusic.src = "./Sound/backgroundMusic.mp3";
 
+//loading bullet sound
 const bulletSound = new Audio();
 bulletSound.src = "./Sound/bulletSound.wav";
 
@@ -31,13 +33,15 @@ document.addEventListener("keyup",(e)=>{
 });
 
 sound.addEventListener("click",(e)=>{
-
+    backgroundMusic.play();
+    backgroundMusic.loop = true;
+    backgroundMusic.volume = 0.3;
 });
 // if(player.position.x + player.size > canvas.width || player.position.x < 0 ){
 //     player.velocity.x = 0;
 // }
 
-
+//game loop
 function animate(){
     context.clearRect(0,0,canvas.width,canvas.height);
     player.update();
