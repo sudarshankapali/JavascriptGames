@@ -11,6 +11,7 @@ class Player{
         this.size = 50;
         this.image = new Image();
         this.image.src = "./Images/ship.png";
+        this.isAlive = true;
     }
     draw(){
         context.fillStyle = "red";

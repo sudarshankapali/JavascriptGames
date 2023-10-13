@@ -1,6 +1,7 @@
 let canvas = document.getElementById("canvas");
 let context = canvas.getContext("2d");
 let sound = document.getElementById("sound");
+let score = 0;
 
 //loading background music
 const backgroundMusic = new Audio();
@@ -14,9 +15,41 @@ bulletSound.volume = 0.5;
 const player = new Player();
 const allbullet = [];
 
-const enemy = new Enemy();
 
-const crash = new checkCollide();
+let enemies = [];
+
+
+setInterval(()=>{
+    const enemy = new Enemy();
+    enemies.push(enemy);
+},3000);
+
+
+// const crash = new checkCollide();
+
+sound.addEventListener("click",(e)=>{
+    backgroundMusic.play();
+    backgroundMusic.loop = true;
+    backgroundMusic.volume = 0.3;
+});
+
+
+//game loop
+function animate(){
+    context.clearRect(0,0,canvas.width,canvas.height);
+    player.update();
+    for(let i = 0; i< enemies.length; i++){
+        enemies[i].update();
+        enemies[i].bulletCollision(allbullet);
+        enemies[i].playerCollision(player);
+        console.log(player.isAlive);
+    }
+    for(let i = 0; i< allbullet.length; i++){
+        allbullet[i].update();
+    }
+    window.requestAnimationFrame(animate);
+}
+animate();
 
 document.addEventListener("keydown",(e)=>{
     if(e.code === "ArrowUp") player.velocity.y = -5;
@@ -36,31 +69,3 @@ document.addEventListener("keyup",(e)=>{
     if(e.code === "ArrowLeft") player.velocity.x = 0;
     if(e.code === "ArrowRight") player.velocity.x = 0;
 });
-
-sound.addEventListener("click",(e)=>{
-    backgroundMusic.play();
-    backgroundMusic.loop = true;
-    backgroundMusic.volume = 0.3;
-});
-// if(player.position.x + player.size > canvas.width || player.position.x < 0 ){
-//     player.velocity.x = 0;
-// }
-
-//enemy movement
-if(enemy.position.x + enemy.size > canvas.width){
-    enemy.velocity.x = -1;
-    console.log("vayo");
-}
-
-//game loop
-function animate(){
-    context.clearRect(0,0,canvas.width,canvas.height);
-    enemy.update();
-    player.update();
-    for(let i = 0; i< allbullet.length; i++){
-        allbullet[i].update();
-        crash.checkCollision(i);
-    }
-    window.requestAnimationFrame(animate);
-}
-animate();
