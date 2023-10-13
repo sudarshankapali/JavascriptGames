@@ -1,6 +1,10 @@
 let canvas = document.getElementById("canvas");
 let context = canvas.getContext("2d");
 let sound = document.getElementById("sound");
+
+const backgroundMusic = new Audio();
+backgroundMusic.src = "./Sound/backgroundMusic.mp3";
+
 const bulletSound = new Audio();
 bulletSound.src = "./Sound/bulletSound.wav";
 
@@ -26,8 +30,8 @@ document.addEventListener("keyup",(e)=>{
     if(e.code === "ArrowRight") player.velocity.x = 0;
 });
 
-sound.addEventListener("keydown",(e)=>{
-    if(e.code === "Space") ;
+sound.addEventListener("click",(e)=>{
+
 });
 // if(player.position.x + player.size > canvas.width || player.position.x < 0 ){
 //     player.velocity.x = 0;
