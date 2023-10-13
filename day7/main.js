@@ -1,5 +1,6 @@
 let canvas = document.getElementById("canvas");
 let context = canvas.getContext("2d");
+let sound = document.getElementById("sound");
 
 const player = new Player();
 const allbullet = [];
@@ -18,6 +19,10 @@ document.addEventListener("keyup",(e)=>{
     if(e.code === "ArrowLeft") player.velocity.x = 0;
     if(e.code === "ArrowRight") player.velocity.x = 0;
 });
+
+// if(player.position.x + player.size > canvas.width || player.position.x < 0 ){
+//     player.velocity.x = 0;
+// }
 
 
 function animate(){
