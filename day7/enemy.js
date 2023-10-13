@@ -6,7 +6,7 @@ class Enemy {
             y:0,
         }
         this.velocity={
-            x:0,
+            x:1,
             y:0,
         }
         this.size = 50;
@@ -21,7 +21,17 @@ class Enemy {
     }
     move(){
         this.position.x += this.velocity.x;
+        if(enemy.position.x + enemy.size > canvas.width){
+            enemy.velocity.x = -1;
+            // console.log("vayo");
+        }
+        else if(enemy.position.x < 0){
+            enemy.velocity.x = 1;
+        }
         this.position.y += this.velocity.y;
+    }
+    checkCollision(){
+        
     }
     update(){
         this.draw();

@@ -43,6 +43,12 @@ sound.addEventListener("click",(e)=>{
 //     player.velocity.x = 0;
 // }
 
+//enemy movement
+if(enemy.position.x + enemy.size > canvas.width){
+    enemy.velocity.x = -1;
+    console.log("vayo");
+}
+
 //game loop
 function animate(){
     context.clearRect(0,0,canvas.width,canvas.height);
