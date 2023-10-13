@@ -14,7 +14,7 @@ class Player{
     }
     draw(){
         context.fillStyle = "red";
-        context.clearRect(0, 0, canvas.width, canvas.height);
+        // context.clearRect(0, 0, canvas.width, canvas.height);
         context.drawImage(this.image,this.position.x,this.position.y,this.size,this.size);
     }
     move(){
