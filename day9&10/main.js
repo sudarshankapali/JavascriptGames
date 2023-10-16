@@ -1,5 +1,6 @@
 let canvas = document.getElementById("canvas");
 let context = canvas.getContext("2d");
+let music = document.getElementById("sound");
 
 let score = 0;
 
@@ -7,6 +8,18 @@ const flappybird = new Bird();
 const bg = new Background();
 const bg1 = new Background(bg.size.width,0);
 
+const pipe1 = new Pipe();
+
+let jumping = new Audio();
+jumping.src = "./Audio/jumpSound.wav";
+
+// let bgMusic = new Audio();
+// bgMusic.src = "./Audio/backgroundMusic.mp3";
+
+// music.addEventListener("click",()=>{
+//     bgMusic.play();
+//     bgMusic.loop = true;
+// });
 
 // game loop
 function animate(){
@@ -15,6 +28,8 @@ function animate(){
     bg1.update(flappybird.isDead);
     flappybird.update();
 
+    pipe1.update(flappybird.isDead);
+
     context.beginPath();
     context.fillStyle = "white";
     context.font = "30px sans serif";
@@ -22,12 +37,19 @@ function animate(){
 
     if(flappybird.isDead){
         clearInterval(intervalId);
+        context.beginPath();
+        context.fillStyle = "red";
+        context.font = "30px arial";
+        context.fillText("Game Over",canvas.width/4,canvas.height/2);
     }
     window.requestAnimationFrame(animate);
 }
 
-document.addEventListener("keydown",()=>{
-    flappybird.jump();
+document.addEventListener("keydown",(e)=>{
+    if(e.code === "Space"){
+        flappybird.jump();
+    jumping.play();
+    }
 })
 
 const intervalId = setInterval(()=>{

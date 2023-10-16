@@ -15,7 +15,7 @@ class Bird{
         this.acceleration = 0.2;
         this.isDead = false;
         this.image = new Image();
-        this.image.src = "./frame-2.png";
+        this.image.src = "./Images/frame-2.png";
     }
     draw(){
         context.beginPath();

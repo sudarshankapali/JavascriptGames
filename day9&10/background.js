@@ -13,7 +13,7 @@ class Background{
             y:0
         }
         this.image = new Image();
-        this.image.src = "./bg.png";
+        this.image.src = "./Images/bg.png";
     }
     draw(){
         context.beginPath();
