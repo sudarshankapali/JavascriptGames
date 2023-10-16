@@ -1,6 +1,7 @@
 let canvas = document.getElementById("canvas");
 let context = canvas.getContext("2d");
-let music = document.getElementById("sound");
+let music = document.getElementById("music");
+let stopMusic = document.getElementById("stop");
 
 let score = 0;
 
@@ -13,13 +14,17 @@ const pipe1 = new Pipe();
 let jumping = new Audio();
 jumping.src = "./Audio/jumpSound.wav";
 
-// let bgMusic = new Audio();
-// bgMusic.src = "./Audio/backgroundMusic.mp3";
+let bgMusic = new Audio();
+bgMusic.src = "./Audio/backgroundMusic.mp3";
 
-// music.addEventListener("click",()=>{
-//     bgMusic.play();
-//     bgMusic.loop = true;
-// });
+music.addEventListener("click",(e)=>{
+    bgMusic.play();
+    bgMusic.loop = true;
+});
+stopMusic.addEventListener("click",()=>{
+    bgMusic.pause();
+    bgMusic.currentTime = 0;
+})
 
 // game loop
 function animate(){
