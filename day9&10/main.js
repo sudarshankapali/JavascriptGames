@@ -2,6 +2,7 @@ let canvas = document.getElementById("canvas");
 let context = canvas.getContext("2d");
 let music = document.getElementById("music");
 let stopMusic = document.getElementById("stop");
+// let rePlay = document.getElementById("replay");
 
 let score = 0;
 
@@ -24,7 +25,13 @@ music.addEventListener("click",(e)=>{
 stopMusic.addEventListener("click",()=>{
     bgMusic.pause();
     bgMusic.currentTime = 0;
-})
+});
+// rePlay.addEventListener("click",()=>{
+//     flappybird.position.x = canvas.width/2;
+//     flappybird.position.y = canvas.height / 2;
+//     flappybird.isDead = false;
+//     score = 0;
+// });
 
 // game loop
 function animate(){
@@ -62,3 +69,5 @@ const intervalId = setInterval(()=>{
 },1000);
 
 animate();
+
+
