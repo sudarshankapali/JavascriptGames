@@ -1,29 +1,26 @@
-class Bird{
-    constructor(){
+class Egg{
+    constructor(x=0,y=0){
         this.position = {
-            x:0,
-            y:0
+            x:x, 
+            y:y
         };
         this.size = {
-            width: 50,
-            height : 50,
+            width: 20,
+            height : 20,
         };
         this.velocity = {
             x: 0,
             y: 1,
         };
-        // this.acceleration = 0.2;
+        this.acceleration = 0.2;
     }
     draw(){
         context.fillStyle = "red";
         context.fillRect(this.position.x,this.position.y,this.size.width,this.size.height);
     }
     move(){
-        // this.velocity.y += this.acceleration;
+        this.velocity.y += this.acceleration;
         this.position.y += this.velocity.y;
-    }
-    jump(){
-        this.velocity.y += -5;
     }
     update(){
         this.draw();
