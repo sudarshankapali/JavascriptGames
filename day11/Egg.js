@@ -10,7 +10,7 @@ class Egg{
         };
         this.velocity = {
             x: 0,
-            y: 1,
+            y: 6,
         };
         this.acceleration = 0.2;
     }
