@@ -6,6 +6,8 @@ const bird = new Bird();
 const arr = [];
 
 let allEnemy = [];
+const bg0 = new Background();
+const bg1 = new Background(bg0.size.width,0);
 
 setInterval(() => {
 const enemy = new Enemy();
@@ -15,9 +17,13 @@ const enemy = new Enemy();
 // game loop 
 function render(){
     context.clearRect(0,0,canvas.width , canvas.height);
+    bg0.update(bird.isAlive);
+    bg1.update(bird.isAlive);
     bird.update();
-    for(let j=0;j<allEnemy.length;j++){
-        allEnemy[j].update();
+    if(bird.isAlive){
+        for(let j=0;j<allEnemy.length;j++){
+            allEnemy[j].update();
+        }
     }
     for(let i=0;i<arr.length;i++){
         arr[i].update();

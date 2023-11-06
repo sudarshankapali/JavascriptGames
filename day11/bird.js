@@ -12,7 +12,7 @@ class Bird{
             x: 0,
             y: 1,
         };
-        this.acceleration = 0.5;
+        this.acceleration = 0.2;
         this.isAlive = true;
     }
     draw(){
@@ -30,6 +30,10 @@ class Bird{
         if(this.position.y<0){
             this.position.y = 0;
         }
+        if(this.position.y + this.size.height >= canvas.height){
+            this.position.y = canvas.height - this.size.height;
+            this.isAlive = false;
+        }
     }
     moveLeft(){
         this.position.x += -10;
@@ -42,7 +46,9 @@ class Bird{
     }
     update(){
         this.draw();
-        this.move();
-        this.borderCollision();
+        if(this.isAlive){
+            this.move();
+            this.borderCollision();
+        }
     }
 }
